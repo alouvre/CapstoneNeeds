@@ -1,0 +1,180 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyPk+46xBQrW+2jiIGRiLq8c",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/alouvre/CapstoneNeeds/blob/main/Fitur%20Scanning\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import xml.etree.ElementTree as ET"
+      ],
+      "metadata": {
+        "id": "C-th2qPN0gXv"
+      },
+      "execution_count": 1,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "!apt-get install -y git"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "mB_ym3VF04Ta",
+        "outputId": "02fee501-2dd8-4662-fbab-38ffd89e97eb"
+      },
+      "execution_count": 5,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Reading package lists... Done\n",
+            "Building dependency tree... Done\n",
+            "Reading state information... Done\n",
+            "git is already the newest version (1:2.34.1-1ubuntu1.10).\n",
+            "0 upgraded, 0 newly installed, 0 to remove and 23 not upgraded.\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "!git clone https://github.com/alouvre/CapstoneNeeds.git"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "DRVwWHcL14ln",
+        "outputId": "23a07965-21e7-4691-d2b3-7a8f57cd1af8"
+      },
+      "execution_count": 16,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Cloning into 'CapstoneNeeds'...\n",
+            "remote: Enumerating objects: 85, done.\u001b[K\n",
+            "remote: Total 85 (delta 0), reused 0 (delta 0), pack-reused 85\u001b[K\n",
+            "Receiving objects: 100% (85/85), 20.26 MiB | 20.18 MiB/s, done.\n",
+            "Resolving deltas: 100% (32/32), done.\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "%cd CapstoneNeeds"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "97g03G3m2lnJ",
+        "outputId": "33c06bb2-ae3e-4934-84c7-380f6460ae56"
+      },
+      "execution_count": 17,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "/content/CapstoneNeeds/dataset/CapstoneNeeds/CapstoneNeeds\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 11,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 379
+        },
+        "id": "xgGUrzE00eTM",
+        "outputId": "97bc6016-a26b-42b8-b323-1dfa8aa34b93"
+      },
+      "outputs": [
+        {
+          "output_type": "error",
+          "ename": "AttributeError",
+          "evalue": "ignored",
+          "traceback": [
+            "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+            "\u001b[0;31mAttributeError\u001b[0m                            Traceback (most recent call last)",
+            "\u001b[0;32m<ipython-input-11-470765691a94>\u001b[0m in \u001b[0;36m<cell line: 31>\u001b[0;34m()\u001b[0m\n\u001b[1;32m     29\u001b[0m \u001b[0;31m# Contoh penggunaan\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m     30\u001b[0m \u001b[0mxml_file_path\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0;34m'CapstoneNeeds/dataset/Annotations/0.xml'\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m---> 31\u001b[0;31m \u001b[0minfo\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mextract_info_from_xml\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mxml_file_path\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m     32\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m     33\u001b[0m \u001b[0mprint\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m\"Informasi Total Harga:\"\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+            "\u001b[0;32m<ipython-input-11-470765691a94>\u001b[0m in \u001b[0;36mextract_info_from_xml\u001b[0;34m(xml_file_path)\u001b[0m\n\u001b[1;32m      9\u001b[0m     \u001b[0;31m# Loop melalui setiap objek dalam file XML\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m     10\u001b[0m     \u001b[0;32mfor\u001b[0m \u001b[0mobj\u001b[0m \u001b[0;32min\u001b[0m \u001b[0mroot\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mfindall\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m'.//object'\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m---> 11\u001b[0;31m         \u001b[0mname\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mobj\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mfind\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m'nama'\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mtext\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m     12\u001b[0m         \u001b[0mbounding_box\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mobj\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mfind\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m'bndbox'\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m     13\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n",
+            "\u001b[0;31mAttributeError\u001b[0m: 'NoneType' object has no attribute 'text'"
+          ]
+        }
+      ],
+      "source": [
+        "def extract_info_from_xml(xml_file_path):\n",
+        "    # Baca file XML\n",
+        "    tree = ET.parse(xml_file_path)\n",
+        "    root = tree.getroot()\n",
+        "\n",
+        "    # Inisialisasi variabel untuk menyimpan informasi\n",
+        "    total_price_info = {}\n",
+        "\n",
+        "    # Loop melalui setiap objek dalam file XML\n",
+        "    for obj in root.findall('.//object'):\n",
+        "        name = obj.find('nama').text\n",
+        "        bounding_box = obj.find('bndbox')\n",
+        "\n",
+        "        # Ambil koordinat bounding box\n",
+        "        xmin = int(bounding_box.find('xmin').text)\n",
+        "        ymin = int(bounding_box.find('ymin').text)\n",
+        "        xmax = int(bounding_box.find('xmax').text)\n",
+        "        ymax = int(bounding_box.find('ymax').text)\n",
+        "\n",
+        "        # Simpan informasi total harga\n",
+        "        if name.lower() == 'total':\n",
+        "            total_price_info['xmin'] = xmin\n",
+        "            total_price_info['ymin'] = ymin\n",
+        "            total_price_info['xmax'] = xmax\n",
+        "            total_price_info['ymax'] = ymax\n",
+        "\n",
+        "    return total_price_info\n",
+        "\n",
+        "# Contoh penggunaan\n",
+        "xml_file_path = 'CapstoneNeeds/dataset/Annotations/0.xml'\n",
+        "info = extract_info_from_xml(xml_file_path)\n",
+        "\n",
+        "print(\"Informasi Total Harga:\")\n",
+        "print(info)\n"
+      ]
+    }
+  ]
+}
