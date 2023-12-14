@@ -1,0 +1,26 @@
+<annotation>
+	<folder>JPEGImages</folder>
+	<filename>2.jpeg</filename>
+	<path>D:\Study_Base\00_PROJECTS\Capstone\dataset\JPEGImages\2.jpeg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>474</width>
+		<height>632</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>total belanja</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>48</xmin>
+			<ymin>281</ymin>
+			<xmax>318</xmax>
+			<ymax>312</ymax>
+		</bndbox>
+	</object>
+</annotation>
